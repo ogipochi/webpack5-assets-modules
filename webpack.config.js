@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
-    entry: './src/index.js',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
         assetModuleFilename: 'assets/[hash][ext][query]'
@@ -22,8 +22,9 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.html$/i,
-                loader: "html-loader",
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
